@@ -1,0 +1,4 @@
+ng serve -o
+ng generate module auth --routing
+ng g component contactos/pages/Listado --skip-tests --style="none"
+ng g component shared/components/Contador
