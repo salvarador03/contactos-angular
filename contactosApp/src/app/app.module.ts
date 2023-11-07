@@ -4,11 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ContadorComponent } from './shared/components/contador/contador.component';
+import { MenuComponent } from './shared/menu/menu/menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ContadorComponent
+    ContadorComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
