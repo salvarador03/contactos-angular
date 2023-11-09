@@ -1,0 +1,32 @@
+<div class="row container mt-4">
+    <div class="col-3">
+        <h2>Búsquedas</h2>
+        <hr>
+        <ul class="list-group">
+            <!--    
+                RouterLink indica que el elemento es un enlace a una parte de nuestra aplicación                 
+                
+                RouterLinkActive indica la clase css a añadir en caso de que estemos en esa ruta, conveniente para marcar la opción
+                del menú que está seleccionada.
+
+                La RUTA VACIA contiene a las demás, de modo que si queremos que solo se marque cuando esté exactamnete en la ruta vacia se puede utilizar el parámetro routerLinkActiveOptions. Esto permite enviar parámetros. En este caso, que sea coincidencia exacta
+            -->
+            <li routerLink=""                   
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact:true }"
+                class="list-group-item">
+                Buscar tarea
+            </li>
+            <li routerLink="informador"     
+                routerLinkActive="active"
+                class="list-group-item">
+                Tareas por informador
+            </li>
+            <li routerLink="asignado"    
+                routerLinkActive="active"
+                class="list-group-item">
+                Tareas por asignado
+            </li>
+        </ul>
+    </div>
+
