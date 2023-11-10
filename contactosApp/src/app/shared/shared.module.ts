@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ContadorComponent } from './components/contador/contador.component';
 import { MenuComponent } from './menu/menu/menu.component';
 import { BusquedasComponent } from './components/busquedas/busquedas.component';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -13,7 +15,9 @@ import { BusquedasComponent } from './components/busquedas/busquedas.component';
     BusquedasComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    RouterModule
   ],
   exports: [
     ContadorComponent,

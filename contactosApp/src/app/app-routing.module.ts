@@ -15,6 +15,10 @@ const routes: Routes = [
     loadChildren: () => import('./tasks/tasks.module').then(m => m.TasksModule),
   },
   {
+    path: 'contactos',
+    loadChildren: () => import('./contactos/contactos.module').then(m => m.ContactosModule),
+  },
+  {
     path: '**',
     redirectTo: 'dashboard'
   }

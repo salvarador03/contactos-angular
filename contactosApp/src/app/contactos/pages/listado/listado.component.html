@@ -1,1 +1,12 @@
-<p>listado works!</p>
+
+<ul>
+    <!--Item sera un array en el componente-->
+    <li *ngFor="let contacto of contactos">
+        <span class="text-warning">{{contacto.nombre + " "}}</span>
+        <span>{{contacto.apellidos}} </span>
+    </li>
+</ul>
+
+<p *ngIf="esSesionIniciada()">
+    Hola mundo
+</p>
