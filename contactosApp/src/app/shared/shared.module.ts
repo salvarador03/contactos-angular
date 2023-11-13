@@ -5,6 +5,7 @@ import { MenuComponent } from './menu/menu/menu.component';
 import { BusquedasComponent } from './components/busquedas/busquedas.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { FiltroBusquedaComponent } from './components/filtro-busqueda/filtro-busqueda.component';
 
 
 
@@ -12,7 +13,8 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     ContadorComponent,
     MenuComponent,
-    BusquedasComponent
+    BusquedasComponent,
+    FiltroBusquedaComponent
   ],
   imports: [
     CommonModule,

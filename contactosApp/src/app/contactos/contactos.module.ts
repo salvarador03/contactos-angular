@@ -5,17 +5,18 @@ import { ContactosRoutingModule } from './contactos-routing.module';
 import { EditarComponent } from './pages/editar/editar.component';
 import { VerComponent } from './pages/ver/ver.component';
 import { ListadoComponent } from './pages/listado/listado.component';
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     EditarComponent,
     VerComponent,
-    ListadoComponent
+    ListadoComponent,
   ],
   imports: [
     CommonModule,
-    ContactosRoutingModule
+    ContactosRoutingModule,
+    FormsModule
   ]
 })
 export class ContactosModule { }

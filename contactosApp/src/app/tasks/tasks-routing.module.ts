@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EditarComponent } from '../contactos/pages/editar/editar.component';
 import { ListadoComponent } from '../contactos/pages/listado/listado.component';
+import { Listado2Component } from '../contactos/pages/listado2/listado2.component';
 import { VerComponent } from '../contactos/pages/ver/ver.component';
 
 const routes: Routes = [
@@ -14,6 +15,11 @@ const routes: Routes = [
         // tareas/listado
         path: 'listado',
         component: ListadoComponent
+      },
+      {
+        // tareas/listado
+        path: 'listado2',
+        component: Listado2Component
       },
       {
         // tareas/agregar

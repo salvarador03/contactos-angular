@@ -1,10 +1,13 @@
 <app-menu></app-menu>
-
-
-<app-contador></app-contador>
-<app-busquedas></app-busquedas>
-
-<a routerLink="/tareas/listado">Listado de Tareas</a>
+<!-- Filtro de búsquedas -->
+<app-filtro-busqueda 
+        placeholder="Introduce el término de búsqueda"
+        (onBusquedaEjecutada)="buscar($event)">
+</app-filtro-busqueda>
+<!-- 
+    Tabla con los resultados.
+ -->
+ <app-tabla-contactos [tareas]="tareas" (onBorrar)="borrarTarea($event)"></app-tabla-contactos>
 
 <router-outlet></router-outlet>
 
