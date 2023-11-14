@@ -1,3 +1,9 @@
+export interface TaskmanListaContactosResponse {
+    ok:      number;
+    mensaje: string;
+    datos:   Contacto[];
+}
+
 export interface Contacto {
     id?:    number;
     nombre?: string;
