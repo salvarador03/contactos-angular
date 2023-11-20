@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Contacto } from 'src/interfaces/contacto.interface';
-import { ContactosService } from 'src/app/tasks/services/contactos.service';
+import { ContactosService } from 'src/app/contactos/services/contactos.service';
 import { tap } from 'rxjs';
 
 @Component({

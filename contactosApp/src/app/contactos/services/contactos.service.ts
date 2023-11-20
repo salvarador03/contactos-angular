@@ -23,7 +23,19 @@ export class ContactosService {
   private generarUrl(script: string) : string {
     return `${this.contactosBaseUrl}/ajax.php?s=${script}${this.debug?"&__debug":""}`;
   }
-
+  /**
+   *  Dado el filtro, retorna los contactos que coinciden con el criterio
+   */ 
+    getContactoPorId(filtro: string = '%'): Observable<Contacto> {
+    
+      // Inicializa el objeto con la petición
+      const argumentos = {
+        filtro: (filtro == '%')?filtro:filtro+'%'
+      };
+  
+      // Retorna un observable
+      return this.httpClient.get<Contacto>(this.generarUrl("_getContactosPorNombre"));
+    }
   /**
    *  Dado el filtro, retorna los contactos que coinciden con el criterio
    */ 

@@ -13,7 +13,7 @@ export interface Contacto {
     web?: string;
     notas?: string;
     direccion?: string;
-    Poblacion?: string;
-    Provincia?: string;
-    CP?: number;
+    poblacion?: string;
+    provincia?: string;
+    cp?: number;
 }
