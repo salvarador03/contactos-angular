@@ -2,115 +2,28 @@
 
     <div class="mx-auto">        
 
-        <!-- Identificador de la tarea -->
-        <input id="tareaId" name="tareaId" type="hidden" value="-1">
+        <!-- Identificador de la contacto -->
+        <input id="id" name="id" type="hidden" value="-1">
 
-        <!-- Título de la incidencia. Es texto -->
+        <!-- Nombre de la incidencia. Es texto -->
         <div class="row">
 
             <div class="col-md-12 mb-3">
-                <label for="titulo" class="form-label">Título</label>
+                <label for="nombre" class="form-label">Nombre</label>
 
-                <!-- El título -->
-                <input formControlName="titulo" type="text" class="form-control" [readonly]="actualizando">
-                <span class="form-text text-danger" *ngIf="esCampoNoValido('titulo')">{{ mensajeErrorCampo('titulo') }}</span>
+                <!-- El campo nombre -->
+                <input formControlName="nombre" type="text" class="form-control" [readonly]="actualizando">
+                <span class="form-text text-danger" *ngIf="esCampoNoValido('nombre')">{{ mensajeErrorCampo('nombre') }}</span>
             </div>
-
-        </div>
-          
-        <div class="tab-pane fade show active" id="datos" role="tabpanel" aria-labelledby="datos-tab">
-            
-            <!-- CAMPOS EN EL FORMULARIO -->
-            <div class="row">
-
-                <!-- Informador. BUSQUEDA -->
-                <label for="informadorDatalist" class="form-label">Informador</label>
-                
-                <input 
-                    id="informadorDatalist"
-                    [formControl]="nombreInformador" 
-                    name="informador" 
-                    campo_validacion="informadorId" 
-                    class="form-control" 
-                    list="informadorDatalistOptions" 
-                    placeholder="Type to search..."
-                    
-                    (input)="nombreInformadorInput($event)"
-                    (change)="nombreInformadorChange($event)"
-                    >
-                <input formControlName="id_informador" type="hidden">
-                <div class="invalid-feedback"></div>                
-                <datalist id="informadorDatalistOptions">
-                    <option *ngFor="let e of selectInformador">{{e.texto}}</option>
-                </datalist>            
-            </div>        
-    
-            <div class="row">
-
-                <!-- Asignado. BUSQUEDA en tabla por nombre que muestre opciones -->
-                <div class="col-md-5 mb-1">
-                    <label for="asignado" class="form-label">Asignado</label>                                        
-                    <select id="asignado" formControlName="id_asignado" class="form-select">
-                        <option *ngFor="let u of selectAsignado" [value]="u.id">{{ u.texto }}</option>
-                    </select>                                    
-                    <span class="form-text text-danger" *ngIf="esCampoNoValido('id_asignado')">El usuario asignado no puede ser el mismo que el informador</span>
-                </div>
-            </div>        
-    
-            <div class="row">
-                <!-- Tipo. Combo AJAX -->
-                <div class="col-md-5 mb-1">
-
-                    <label for="tipo" class="form-label">Tipo</label>
-                    <select id="tipo" formControlName="id_tipo_tarea" class="form-select">
-                        <option *ngFor="let tt of selectTiposTarea" [value]="tt.id">{{ tt.texto }}</option>
-                    </select>                
-                    <div class="invalid-feedback"></div>
-    
-                </div>
-
-                <!-- Estado. Combo AJAX. Depende del tipo -->
-                <div class="col-md-5">
-
-                    <label for="estado" class="form-label">Estado</label>
-                    <select id="estado" formControlName="id_estado" class="form-select">
-                        <option *ngFor="let e of selectEstadosTarea" [value]="e.id">{{ e.texto }}</option>                        
-                    </select>                
-                    <div class="invalid-feedback"></div>
-                </div>
-            </div>        
-    
-            <div class="row">
-                <!-- Fecha de alta. Por omisión. El día en que se da de alta -->
-                <div class="col-md-3 mb-1">
-                    <label for="fechaalta" class="form-label">Fecha alta</label>
-                    <input formControlName="fecha_alta" type="date" class="form-control">
-                </div>
-    
-                <!-- Fecha vencimiento. La escoge el usuario -->
-                <div class="col-md-3">
-                    <label for="fechavencimiento" class="form-label">Fecha vencimiento</label>
-                    <input formControlName="fecha_vencimiento" type="date" class="form-control">
-                </div>
-    
-                <!-- Hora vencimiento. La escoge el usuario -->
-                <div class="col-md-4">
-                    <label for="horavencimiento" class="form-label">Hora vencimiento</label>
-                    <input formControlName="hora_vencimiento" type="time" class="form-control">
-                </div>
-            </div>        
-            
+        </div>        
             <!-- Descripción -->
             <div class="row">
                 <div class="col-md-12 mb-1">
-                    <label for="descripcion" class="form-label">Descripción</label>
-                    <textarea formControlName="descripcion" class="form-control" rows="2"></textarea>
-                    <span class="form-text text-danger" *ngIf="esCampoNoValido('descripcion')">{{ mensajeErrorCampo('descripcion') }}</span>
+                    <label for="apellidos" class="form-label">Apellidos</label>
+                    <input formControlName="apellidos" class="form-control">
+                    <span class="form-text text-danger" *ngIf="esCampoNoValido('apellidos')">{{ mensajeErrorCampo('apellidos') }}</span>
                 </div>
             </div>        
-
-        </div> 
-
     </div>
 
 </form>    
@@ -120,20 +33,21 @@
 <!-- Botones de navegación -->
 <div class="row ">
     <span class="col-7"></span>
-    <button class="btn btn-primary col-2 m-3" routerLink="/tareas">Volver</button>
+    <button class="btn btn-primary col-2 m-3" routerLink="/contactos">Volver</button>
     
     <!-- Desabilita el guardar si hay una operación en curso -->
     <button class="btn btn-warning col-2 m-3" (click)="guardar()" [disabled]="formulario.pending">Guardar</button>
 </div>
-<!--
+
 <div>
 {{ formulario.valid }}
 <br>
 {{ formulario.errors| json }}
 <br>
-{{ formulario.controls['titulo'].errors | json }}
+Errores nombre: {{ formulario.controls['nombre'].errors | json }}
+<br>
+Errores titulo: {{ formulario.controls['titulo'].errors | json }}
 <br>
 {{ formulario.getRawValue()| json }}
 </div>
--->
 

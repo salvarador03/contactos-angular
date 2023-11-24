@@ -6,8 +6,8 @@ export interface TaskmanListaContactosResponse {
 
 export interface Contacto {
     id?:    number;
-    nombre?: string;
-    apellidos?: string;
+    nombre: string;
+    apellidos: string;
     empresa?: string;
     puesto?: string;
     web?: string;

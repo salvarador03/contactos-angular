@@ -3,9 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { DialogService } from 'src/app/shared/services/dialog.service';
 import { ContactosService } from '../../services/contactos.service';
-import { ValidacionService } from '../../services/validacion.service';
-import { ValidacionTareasService } from '../../services/validacion-tareas.service';
-import { ValidacionTituloService } from '../../services/validacion-titulo.service';
+import { Contacto } from 'src/interfaces/contacto.interface';
 
 @Component({
   selector: 'app-editar',
@@ -19,35 +17,19 @@ export class EditarComponent {
   // - Validaciones locales
   // - Validaciones asíncronas
   formulario: FormGroup = this.fb.group({
-    Id                : [-1],
+    id                : [-1],
 
-    nombre            : [ '', 
-                          [ Validators.required, this.validacionService.validarEmpiezaMayuscula ],
-                          [ this.validacionTituloService ]
-                        ],
-    apellidos     : ['', [ Validators.required] ],
-    empresa       : ['', [ Validators.required] ],
-
-    puesto     : ['', [ Validators.required] ],
-
-    web         : [ {
-                            value: -1, 
-                            disabled: true
-                          }, 
-                          [ Validators.required] 
+    nombre            : ['', 
+                          [ Validators.required /*, this.validacionService.validarEmpiezaMayuscula ],
+                          [ this.validacionTituloService */]
                         ],
 
-    notas        : [''],
-    direccion : [''],
-    poblacion  : [''],
-    provincia       : ['', [ Validators.required] ],
-    cp  : [''],
-
-
+    apellidos         : ['', 
+                          [ Validators.required] ],
 }, {  
   // 008 Este segundo argumento que puedo enviar al formgroup permite por ejemplo ejecutar
   // validadores sincronos y asíncronos. Son validaciones al formgroup
-  validators: [ this.validacionService.camposNoIguales('id_informador', 'id_asignado') ]
+ // validators: [ this.validacionService.camposNoIguales('id_informador', 'id_asignado') ]
 });
 
 // Defino campos sueltos auxiliares que voy a utilizar
@@ -77,9 +59,7 @@ constructor(
   private router            : Router,
   private dialogService     : DialogService,
   private contactosService     : ContactosService,
-  private validacionService       : ValidacionService,
-  private validacionTareasService : ValidacionTareasService,
-  private validacionTituloService : ValidacionTituloService
+
 
 ) { }
 
@@ -94,7 +74,8 @@ ngOnInit(): void {
     this.actualizando = true;
 
     // Se carga la validación asíncrona en caso de edición
-    this.formulario.get('titulo')?.clearAsyncValidators();
+    // TODO arreglar para que funcione guardar nombre que existe
+    // this.formulario.get('titulo')?.clearAsyncValidators();
   }
 
   // Carga el contenido de los selects desde la base de datos
@@ -106,6 +87,23 @@ ngOnInit(): void {
   this.formulario.get('id_tipo_tarea')?.valueChanges.subscribe(id_tipo_tarea => {      
     this.cargarSelectEstados(id_tipo_tarea);
   });  
+}
+
+crearContacto() {
+  this.contactosService.agregarContacto(this.formulario.getRawValue())
+  {
+    next: (contacto: Contacto) => {
+        this.router.navigate
+    }
+  }
+}
+
+esCampoNoValido(campo: string) : boolean {
+  return true;
+}
+
+mensajeErrorCampo(campo: string) : string {
+  return "";
 }
 
 cargarContacto() {
@@ -124,6 +122,18 @@ cargarSelectEstados(params:bigint) {
   return true;
 }
 guardar() {
-  return true;
+    if(this.formulario.invalid) {
+      this.formulario.markAllAsTouched();
+
+      this.dialogService.mostrarMensaje('Por favor, revise los datos');
+
+      return
+    }
+    if(this.formulario.get('id')?.value > 0){
+        // actualiza la tarea
+    } else {
+        // crea la tarea
+        this.crearContacto();
+    }
 }
 }
