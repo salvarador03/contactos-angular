@@ -3,6 +3,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { DialogService } from 'src/app/shared/services/dialog.service';
 import { ContactosService } from '../../services/contactos.service';
+import { ValidacionService } from 'src/app/shared/services/validacion.service';
+import { Contacto } from 'src/interfaces/contacto.interface';
 
 @Component({
   selector: 'app-editar',
@@ -18,17 +20,19 @@ export class EditarComponent {
     formulario: FormGroup = this.fb.group({
       id          : [-1],
 
-      nombre      : [ '', 
-                      [ Validators.required /*, this.validacionService.validarEmpiezaMayuscula*/ ],
+      nombre      : [ '', /*Valor por defecto*/
+                      [ Validators.required , this.validacionService.validarEmpiezaMayuscula ],
                       [ /*this.validacionTituloService*/ ]
                     ],
                 
-      apellidos   : ['', [ Validators.required] ],
+      apellidos   : ['', 
+                      [ Validators.required, this.validacionService.validarEmpiezaMayuscula] 
+                    ],
 
     }, {  
       // 008 Este segundo argumento que puedo enviar al formgroup permite por ejemplo ejecutar
       // validadores sincronos y asíncronos. Son validaciones al formgroup
-      //validators: [ this.validacionService.camposNoIguales('id_informador', 'id_asignado') ]
+      validators: [ this.validacionService.camposNoIguales('nombre', 'apellidos') ]
     });
 
   // Defino campos sueltos auxiliares que voy a utilizar
@@ -57,9 +61,9 @@ export class EditarComponent {
 
     private dialogService     : DialogService,
     
-    private contactosService  : ContactosService
+    private contactosService  : ContactosService,
 
-    //private validacionService       : ValidacionService,
+    private validacionService       : ValidacionService
     //private validacionTareasService : ValidacionContactosService
 
   ) { }
@@ -121,19 +125,33 @@ export class EditarComponent {
     } else {
 
       // Crea la tarea
-      this.crearTarea();
+      this.crearContacto();
     }
   } 
 
 
-  esCampoNoValido(campo : string) : boolean {
-    return true;
+  esCampoNoValido(campo : string) : boolean | undefined {
+    return this.formulario.get(campo)?.invalid && this.formulario.get(campo)?.touched;
   }
   
   mensajeErrorCampo(campo : string) : string {
-    return "";
-  }
+    const errors = this.formulario.get(campo)?.errors;
+    let mensajeError = "";
 
+    if(errors) {
+      for(let e in errors) { // Recorre los atributos de un objeto
+
+        // Obtiene el mensaje
+        const mensaje = this.validacionService.getMensajeError(e);
+        mensajeError = mensajeError + mensaje;
+
+        // Solo quiero el primero en estos momentos. Si hubiera más podría ponerlos
+        // y nostrarlso con ngFor
+        break;
+      }
+    }
+    return mensajeError;
+  }
 
 //-------------------------------------------------------------------------------------
   // Funciones de persistencia. Permiten guardar y recuperar tareas
@@ -142,21 +160,21 @@ export class EditarComponent {
   /**
    * Crea una tarea a partir de los datos en el form y pasa a modo edición
    */
-  crearTarea() {
+  crearContacto() {
     
-    this.tareasService.agregarTarea(this.formulario.getRawValue()).subscribe(           
+    this.contactosService.agregarContacto(this.formulario.getRawValue()).subscribe(           
       {      
         // Reciebe el siguiente valor
-        next: (tarea: Tarea) =>  {
+        next: (contacto: Contacto) =>  {
 
           // Se ha guardado la tarea. Paso a modo edición
-          this.router.navigate(['/tareas/editar', tarea.id ]);
+          this.router.navigate(['/contactos/editar', contacto.id ]);
 
           // Muestro un toast indicando que se ha guardado la tarea
-          this.dialogService.mostrarToast("Tarea creada");
+          this.dialogService.mostrarToast("Contacto creada");
 
           // Muestra la tarea en el log
-          console.log(tarea);
+          console.log(contacto);
         },
 
         // El observer ha recibido una notificación completa

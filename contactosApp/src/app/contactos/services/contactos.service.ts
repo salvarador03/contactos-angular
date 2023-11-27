@@ -54,6 +54,17 @@ export class ContactosService {
 
     // Llama a eliminar la tarea
     return this.httpClient.delete<Contacto>(url);
-  }  
+  } 
+    /**
+   * Borra un contacto
+   */
+    agregarContacto(contacto : Contacto): Observable<Contacto> {
+      
+      // Calcula el recurso incluyendo el filtro
+      const url : string = `${this.contactosUrl}/${contacto.id}`;
+  
+      // Llama a eliminar la tarea
+      return this.httpClient.delete<Contacto>(url);
+    }   
 
 }
