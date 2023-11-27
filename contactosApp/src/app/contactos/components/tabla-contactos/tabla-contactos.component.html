@@ -1,12 +1,3 @@
-
-<form (ngSubmit)="buscar()" autocomplete="off">
-    <input type="text" 
-           name="termino" 
-           class="form-control" 
-           placeholder="Introduce título a buscar" 
-           [(ngModel)]="termino" >
-</form>  
-
 <!-- Aquí está la tabla donde se van a insetar los resultados -->
 <table class="table table-bordered table-striped text-center table-light table-hover align-items-center">
 
@@ -32,7 +23,7 @@
             <td>{{ contacto.apellidos }}</td>
             <td>
                 <!-- Enlace a ver -->
-                <i [routerLink]="['../ver', contacto.id ]" class="btn btn-success bi bi-eye"></i>
+                <i [routerLink]="['..', contacto.id ]" class="btn btn-success bi bi-eye"></i>
             </td>                
             <td>
                 <!-- Enlace a la edición -->                                
@@ -45,4 +36,3 @@
         </tr>        
     </tbody>
 </table>
-

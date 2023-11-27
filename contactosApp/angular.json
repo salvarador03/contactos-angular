@@ -32,7 +32,7 @@
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/@popperjs/core/dist/umd/popper.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"              
             ]
           },
           "configurations": {
@@ -106,8 +106,5 @@
         }
       }
     }
-  },
-  "cli": {
-    "analytics": "4ca3c353-ec87-4a3b-bb09-17d458c66240"
   }
 }
