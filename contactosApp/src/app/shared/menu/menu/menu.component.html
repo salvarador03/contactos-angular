@@ -6,7 +6,7 @@
             <a class="navbar-brand" href="#">contactosApp</a>
             
             <!-- Botón para tamaño pequeño de pantalla -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            <button routerLink="dashboard" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -14,23 +14,23 @@
             <!-- Opciones del menú -->
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
-    
-                    <!-- Menú de contactos-->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Contactos
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Todos</a></li>
-                            <li><a class="dropdown-item" href="#">Alfabético</a></li>
-                            <li><a class="dropdown-item" href="#">Por campo</a></li>
-                        </ul>
+                    <!-- Contactos -->
+                    <li class="nav-item">
+                        <a routerLink="contactos" routerLinkActive="text-warning" class="nav-link active" aria-current="page" href="#">Contactos</a>
                     </li>
-    
+                    <!-- Listado 1 -->
+                    <li class="nav-item">
+                        <a routerLink="tareas/listado" routerLinkActive="text-warning" class="nav-link active" aria-current="page" href="#">Listado 1</a>
+                    </li>
+                    <li class="nav-item">
+                        <a routerLink="tareas/listado2" routerLinkActive="text-warning" class="nav-link active" aria-current="page" href="#">Listado 2 NW</a>
+                    </li>
+                    <li class="nav-item">
+                        <a routerLink="#" routerLinkActive="text-warning" class="nav-link active" aria-current="page" href="#">Listado 3 </a>
+                    </li>
                     <!-- Teléfonos -->
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Teléfonos</a>
+                        <a class="nav-link active" aria-current="page" href="#">Cerrar sesión</a>
                     </li>
                 </ul>
             </div>

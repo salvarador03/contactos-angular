@@ -2,11 +2,20 @@
 
     <div class="mx-auto">        
 
+<<<<<<< HEAD
         <!-- Identificador de la tarea -->
         <input id="id" name="id" type="hidden" value="-1">
 
         <!-- Nombre. Es texto -->
         <div class="row">
+=======
+        <!-- Identificador de la contacto -->
+        <input id="id" name="id" type="hidden" value="-1">
+
+        <!-- Nombre de la incidencia. Es texto -->
+        <div class="row">
+
+>>>>>>> ca7a7bcffe0cace2b7e91b2922cde450a3cb8ee8
             <div class="col-md-12 mb-3">
                 <label for="nombre" class="form-label">Nombre</label>
 
@@ -14,6 +23,7 @@
                 <input formControlName="nombre" type="text" class="form-control" [readonly]="actualizando">
                 <span class="form-text text-danger" *ngIf="esCampoNoValido('nombre')">{{ mensajeErrorCampo('nombre') }}</span>
             </div>
+<<<<<<< HEAD
         </div>                      
        
         <!-- Apellidos. Es texto -->
@@ -25,6 +35,17 @@
             </div>
         </div>        
 
+=======
+        </div>        
+            <!-- Descripción -->
+            <div class="row">
+                <div class="col-md-12 mb-1">
+                    <label for="apellidos" class="form-label">Apellidos</label>
+                    <input formControlName="apellidos" class="form-control">
+                    <span class="form-text text-danger" *ngIf="esCampoNoValido('apellidos')">{{ mensajeErrorCampo('apellidos') }}</span>
+                </div>
+            </div>        
+>>>>>>> ca7a7bcffe0cace2b7e91b2922cde450a3cb8ee8
     </div>
 
 </form>    
@@ -34,7 +55,11 @@
 <!-- Botones de navegación -->
 <div class="row ">
     <span class="col-7"></span>
+<<<<<<< HEAD
     <button class="btn btn-primary col-2 m-3" routerLink="/tareas">Volver</button>
+=======
+    <button class="btn btn-primary col-2 m-3" routerLink="/contactos">Volver</button>
+>>>>>>> ca7a7bcffe0cace2b7e91b2922cde450a3cb8ee8
     
     <!-- Desabilita el guardar si hay una operación en curso -->
     <button class="btn btn-warning col-2 m-3" (click)="guardar()" [disabled]="formulario.pending">Guardar</button>
@@ -47,9 +72,16 @@
 <br>
 Errores nombre: {{ formulario.controls['nombre'].errors | json }}
 <br>
+<<<<<<< HEAD
 Errores apellidos: {{ formulario.controls['apellidos'].errors | json }}
+=======
+Errores titulo: {{ formulario.controls['titulo'].errors | json }}
+>>>>>>> ca7a7bcffe0cace2b7e91b2922cde450a3cb8ee8
 <br>
 {{ formulario.getRawValue()| json }}
 </div>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> ca7a7bcffe0cace2b7e91b2922cde450a3cb8ee8
