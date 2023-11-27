@@ -1,21 +1,12 @@
-<<<<<<< HEAD
 
-=======
->>>>>>> ca7a7bcffe0cace2b7e91b2922cde450a3cb8ee8
 <form (ngSubmit)="buscar()" autocomplete="off">
     <input type="text" 
            name="termino" 
            class="form-control" 
-<<<<<<< HEAD
            placeholder="Introduce título a buscar" 
            [(ngModel)]="termino" >
 </form>  
 
-=======
-           placeholder="Introduce nombre a buscar" 
-           [(ngModel)]="termino" >
-</form>  
->>>>>>> ca7a7bcffe0cace2b7e91b2922cde450a3cb8ee8
 <!-- Aquí está la tabla donde se van a insetar los resultados -->
 <table class="table table-bordered table-striped text-center table-light table-hover align-items-center">
 
@@ -25,34 +16,20 @@
             <th scope="col">id</th>
             <th scope="col">Nombre</th>
             <th scope="col">Apellidos</th>
-<<<<<<< HEAD
             <th scope="col"></th> <!-- Mostrar detalles -->
             <th scope="col"></th> <!-- Editar -->
             <th scope="col"></th> <!-- Eliminar -->
-=======
-            <th scope="col">Empresa</th>
-            <th scope="col">Puesto</th>
-            <th scope="col">Web</th>
-            <th scope="col"></th> <!-- Mostrar detalles -->
-            <th scope="col"></th> <!-- Editar -->
-            <th scope="col"></th> <!-- Eliminar tarea -->
->>>>>>> ca7a7bcffe0cace2b7e91b2922cde450a3cb8ee8
         </tr>
     </thead>
     
     <!-- 
-<<<<<<< HEAD
         Cuerpo de la tabla. Aquí es donde se van a insertar las tareas
-=======
-        Cuerpo de la tabla. Aquí es donde se van a insertar los contactos
->>>>>>> ca7a7bcffe0cace2b7e91b2922cde450a3cb8ee8
      -->
     <tbody>
         <tr *ngFor="let contacto of contactos; let i = index">
             <td>{{ contacto.id }}</td>
             <td>{{ contacto.nombre }}</td>
             <td>{{ contacto.apellidos }}</td>
-<<<<<<< HEAD
             <td>
                 <!-- Enlace a ver -->
                 <i [routerLink]="['../ver', contacto.id ]" class="btn btn-success bi bi-eye"></i>
@@ -63,27 +40,9 @@
             </td>    
             <td>
                 <!-- Eliminar -->
-=======
-            <td>{{ contacto.empresa }}</td>
-            <td>{{ contacto.puesto }}</td>
-            <td>{{ contacto.web }}</td>
-            <td>
-                <!-- Enlace a ver el contacto -->
-                <i [routerLink]="['../ver', contacto.id ]" class="btn btn-success bi bi-eye"></i>
-            </td>                
-            <td>
-                <!-- Enlace a la edición del contacto -->                                
-                <i [routerLink]="['../editar', contacto.id ]" class="btn btn-warning bi bi-pencil"></i>
-            </td>    
-            <td>
-                <!-- Eliminar el contacto -->
->>>>>>> ca7a7bcffe0cace2b7e91b2922cde450a3cb8ee8
                 <i (click)="borrarContacto(i)" class="btn btn-danger bi bi-trash"></i>
             </td>
         </tr>        
     </tbody>
 </table>
-<<<<<<< HEAD
 
-=======
->>>>>>> ca7a7bcffe0cace2b7e91b2922cde450a3cb8ee8
