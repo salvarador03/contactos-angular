@@ -19,9 +19,11 @@ export class ListadoComponent {
   buscar() : void {
 
     let contacto: Contacto = {
-      id            : 1,
-      nombre        : 'Paco',
-      apellidos     : 'García'
+      id: 1,
+      nombre: 'Paco',
+      apellidos: 'García',
+      datos: undefined,
+      ok: 0
     };
 
     // Añade el contacto al array de contactos

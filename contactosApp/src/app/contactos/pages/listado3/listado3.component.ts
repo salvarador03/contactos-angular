@@ -49,7 +49,7 @@ export class Listado3Component {
   private cargarContactos(filtro: string | undefined = undefined) {
     
     // Cuando la pantalla se muestra se tienen que mostrar las contactos.
-    this.contactosService.getContactosPorNombre(filtro)
+    this.contactosService.getContactosPorNombre(filtro ?? "")
      
       .pipe(
 

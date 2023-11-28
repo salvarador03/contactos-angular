@@ -1,4 +1,6 @@
 export interface Contacto {
+    datos: any;
+    ok: number;
     id?:       number;
     nombre:    string;
     apellidos: string;

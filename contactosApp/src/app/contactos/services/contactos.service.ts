@@ -8,7 +8,6 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ContactosService {
-
   // Ruta base para todas las llamadas al servicio
   // se toma de environment
   private contactosUrl = `${environment.contactosBackendBaseUrl}/contactos`;
@@ -43,6 +42,14 @@ export class ContactosService {
     return this.httpClient.get<Contacto>(url);
   }  
 
+   /**
+   * Obtiene un contacto por el nombre
+   */
+  getContactosPorNombre(nombre: string) : Observable<Contacto []> {
+    const url : string = `${this.contactosUrl}?nombre_like=${nombre}`;
+    
+    return this.httpClient.get<Contacto []>(url);
+    }
 
   /**
    * Borra un contacto
@@ -64,7 +71,7 @@ export class ContactosService {
       const url : string = `${this.contactosUrl}/${contacto.id}`;
   
       // Llama a eliminar la tarea
-      return this.httpClient.delete<Contacto>(url);
+      return this.httpClient.delete<Contacto>(url); // TODO: método post
     }   
 
 }
