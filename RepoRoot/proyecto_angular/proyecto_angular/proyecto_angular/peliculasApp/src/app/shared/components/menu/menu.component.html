@@ -1,0 +1,37 @@
+    <!-- Barra de navegación -->
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary mb-4">
+            <div class="container-fluid">
+                
+                <!-- Nombre de la aplicación -->
+                <a routerLink="dashboard" class="navbar-brand">contactosApp</a>
+                
+                <!-- Botón para tamaño pequeño de pantalla -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Opciones del menú -->
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+        
+                        <!-- Contactos -->
+                        <li class="nav-item">
+                            <a routerLink="contactos" routerLinkActive="text-warning" class="nav-link active" aria-current="page" href="#">Contactos</a>
+                        </li>
+                        
+                        <!-- Listado 2 -->
+                        <li class="nav-item">
+                            <a routerLink="contactos/listado2" routerLinkActive="text-warning" class="nav-link active" aria-current="page" href="#">Listado2</a>
+                        </li>
+
+                        <!-- Teléfonos -->
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Cerrar sesión</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
